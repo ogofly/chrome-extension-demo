@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "每天0点刷新",
+  "name": "RefreshPage",
   "version": "1.0",
   "permissions": [
     "storage",
