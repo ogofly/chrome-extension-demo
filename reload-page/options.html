@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reload Options</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Options</h2>
+  <label>
+    Reload interval (seconds)
+    <input type="number" id="refreshInterval" min="1" value="10">
+  </label>
+  <button id="saveBtn">Save</button>
+  <span id="status"></span>
+
+  <script src="options.js"></script>
+</body>
+</html>
