@@ -3,9 +3,8 @@ document.addEventListener("DOMContentLoaded", restoreOptions);
 document.getElementById("saveBtn").addEventListener("click", saveOptions);
 
 function saveOptions() {
-  var refreshInterval = document.getElementById("refreshInterval").value;
-  let refreshTime = document.getElementById("refreshTime").value;
-  chrome.storage.local.set({ refreshInterval: refreshInterval, refreshTime: refreshTime }, () => {
+  var enable = document.getElementById("enable").checked;
+  chrome.storage.local.set({ enable: enable }, () => {
     var status = document.getElementById("status");
     status.textContent = "saved";
     setTimeout(function () {
@@ -15,8 +14,7 @@ function saveOptions() {
 }
 
 function restoreOptions() {
-  chrome.storage.local.get(["refreshInterval", "refreshTime"], (r) => {
-    document.getElementById("refreshInterval").value = r.refreshInterval;
-    document.getElementById("refreshTime").value = r.refreshTime ? r.refreshTime : "";
+  chrome.storage.local.get(["enable"], (r) => {
+    document.getElementById("enable").checked = r.enable ? r.enable : "";
   });
 }

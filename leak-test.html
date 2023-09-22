@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>内存占用过高示例, 用于测试网页无响应时重新打开网页</title>
+  <script>
+    // 创建一个全局数组，用于模拟内存泄漏
+    var memoryLeak = [];
+
+    // 模拟内存泄漏导致内存占用过高
+    function simulateMemoryLeak() {
+      for (var i = 0; i < 10000000; i++) {
+        var obj = document.createElement('div');
+        memoryLeak.push(obj);
+      }
+    }
+
+    // 更新内存使用情况并显示在页面上
+    function updateMemoryUsage() {
+      var memoryUsage = memoryLeak.length;
+      document.getElementById('memory-usage').innerText = '内存使用情况: ' + memoryUsage;
+    }
+
+    // 定期更新内存使用情况
+    setInterval(updateMemoryUsage, 1000);
+
+    // 启动内存泄漏
+    setInterval(simulateMemoryLeak, 100)
+  </script>
+</head>
+<body>
+  <h1>内存占用过高示例</h1>
+  <p id="memory-usage">内存使用情况: 0</p>
+  <p>这个示例模拟了内存占用过高的情况，当内存占用超过限制时，网页可能会崩溃。</p>
+</body>
+</html>
